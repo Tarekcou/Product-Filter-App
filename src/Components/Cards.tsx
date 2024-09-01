@@ -9,16 +9,18 @@ const Cards = ({ product }: Props) => {
   return (
     <Card className="shadow-xl mx-auto max-w-[240px]">
       <Card.Image className="p-5 h-[150px]" src={product.img} alt="Shoes" />
-      <Card.Body className="items-center px-2 h-[250px] text-center">
-        <Card.Title tag="h2">{product.title}</Card.Title>
+      <Card.Body className="flex flex-col items-center gap-3 p-3 h-[250px] text-center">
+        <Card.Title className="font-bold" tag="h2">
+          {product.title}
+        </Card.Title>
         <p>{product.description}</p>
-        <Card.Actions className="justify-end">
+        <Card.Actions className="flex justify-around gap-5">
           <p className="line-through">${product.prevPrice}</p>{" "}
           <p>${product.newPrice}</p>
         </Card.Actions>
         <div className="flex justify-center items-center w-full">
           <p className="p-0 w-8/12">{product.reviews}</p>
-          <BsFillBagHeartFill className="p-0 w-6/12" />
+          <BsFillBagHeartFill className="p-0 w-6/12 cursor-pointer" />
         </div>
       </Card.Body>
     </Card>
