@@ -9,7 +9,6 @@ const Sidebar = () => {
       </div>
 
       <Category />
-      {/* <Price /> */}
       <Colors />
     </section>
   );

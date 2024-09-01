@@ -22,6 +22,9 @@ const Cards = ({ product }: Props) => {
           <p className="p-0 w-8/12">{product.reviews}</p>
           <BsFillBagHeartFill className="p-0 w-6/12 cursor-pointer" />
         </div>
+        <p className="font-bold text-green-700 text-xl italic">
+          {product.company}
+        </p>
       </Card.Body>
     </Card>
   );

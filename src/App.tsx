@@ -8,60 +8,73 @@ import Sidebar from "./Sidebar/Sidebar";
 import ProductsData from "./Products/ProductData";
 import AllProducts from "./Products/AllProducts";
 
-export const SideBarContext = createContext({});
+export const SideCategoryContext = createContext({});
+export const SideColorContext = createContext({});
 
 function App() {
   let [searchQuery, setSearchQuery] = useState("");
-  let [recoText, setRecoText] = useState("");
-  let [sideBarText, setSidebarText] = useState("");
-
+  let [sideCategoryText, setSideCategoryText] = useState("");
+  let [sideColorText, setSideColorText] = useState("");
+  // let filterproducts = ProductsData;
   const inputText = (query: string) => {
     setSearchQuery(query);
-    // console.log(query);
   };
 
   const recomendedText = (recomendedtxt: string) => {
-    setRecoText(recomendedtxt);
-    console.log(recomendedtxt);
+    setSearchQuery(recomendedtxt);
   };
-  const filterproducts = ProductsData.filter((product) => {
-    if (searchQuery != "") {
-      // setRecoText("");
-      // setSidebarText("");
-      recoText = "";
-      sideBarText = "";
-      return product.company.toLowerCase() == searchQuery.toLowerCase();
-    } else if (recoText != "") {
-      // setSearchQuery("");
-      // setSidebarText("");
-      searchQuery = "";
-      sideBarText = "";
 
-      return product.company.toLowerCase() == recoText.toLowerCase();
-    } else if (
-      sideBarText != "" &&
-      sideBarText.toLowerCase() == product.category.toLowerCase()
-    ) {
-      searchQuery = "";
-      recoText = "";
+  const onCategoryClick = () => {
+    console.log("fdsfsdfds");
+  };
+  const onColorClick = () => {};
 
-      return sideBarText.toLowerCase() == product.category.toLowerCase();
-    } else if (
-      sideBarText != "" &&
-      sideBarText.toLowerCase() == product.color.toLowerCase()
-    )
-      return sideBarText.toLowerCase() == product.color.toLowerCase();
+  let filterproducts = ProductsData.filter((product) => {
+    return (
+      searchQuery.toLowerCase() === product.company.toLowerCase() ||
+      sideCategoryText.toLowerCase() === product.category.toLowerCase() ||
+      sideColorText.toLowerCase() === product.color.toLowerCase()
+    );
   });
-  console.log(sideBarText, "hello");
+
+  // const onColorClick = () => {};
+  //  });
+  // const Filterng = () => {
+  //   ProductsData.filter((product) => {
+  //     return searchQuery.toLowerCase() === product.company.toLowerCase();
+  //   });
+
+  //   ProductsData.filter((product) => {
+  //     console.log("fdsfsdfds", sideCategoryText);
+
+  //     return sideCategoryText.toLowerCase() === product.category.toLowerCase();
+  //   });
+
+  //   ProductsData.filter((product) => {
+  //     return sideColorText.toLowerCase() === product.color.toLowerCase();
+  //   });
+  // };
+  // filterproducts = Filterng();
 
   return (
     <>
-      <SideBarContext.Provider value={{ sideBarText, setSidebarText }}>
-        <Sidebar />
-      </SideBarContext.Provider>
+      <SideCategoryContext.Provider
+        value={{
+          sideCategoryText,
+          setSideCategoryText,
+          onCategoryClick,
+        }}
+      >
+        <SideColorContext.Provider
+          value={{ sideColorText, setSideColorText, onColorClick }}
+        >
+          <Sidebar />
+        </SideColorContext.Provider>
+      </SideCategoryContext.Provider>
+
       <div className="w-full">
         <div className="flex flex-col justify-start items-start mt-[30px] ml-[220px] pl-5 w-9.5/12">
-          <Nav onSubmit={(query) => inputText(query)} />
+          <Nav onSubmit={inputText} />
 
           <Recommended recomendedText={recomendedText} />
 

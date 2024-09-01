@@ -1,15 +1,34 @@
-import RadioBtn from "../../Components/RadioBtn";
+import { useContext } from "react";
+import { SideColorContext } from "../../App";
+import RadioCategoryBtn from "../../Components/RadioCategoryBtn";
 import ColorItem from "./ColorItem";
+import SideColorPojo from "../../Components/SideColorPojo";
 
-const Price = () => {
+const Colors = () => {
+  const { setSideColorText, onColorClick } = useContext(
+    SideColorContext
+  ) as SideColorPojo;
+  const onSelectedCategory = (title: string) => {
+    setSideColorText(title);
+    onColorClick();
+    // console.log(data);
+  };
+
+  // }
   return (
-    <form className="flex flex-col items-start gap-2 mt-5 mb-10">
+    <form className="flex flex-col items-start gap-2">
       <h2 className="font-bold">Colors</h2>
-      {ColorItem.map((title, index) => (
-        <RadioBtn key={index} title={title} id={index} />
+      {ColorItem.map((itemName: string, index: number) => (
+        <RadioCategoryBtn
+          key={index}
+          title={itemName}
+          id={index}
+          dataCustom="color"
+          onSelected={onSelectedCategory}
+        />
       ))}
     </form>
   );
 };
 
-export default Price;
+export default Colors;

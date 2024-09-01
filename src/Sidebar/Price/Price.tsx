@@ -1,4 +1,4 @@
-import RadioBtn from "../../Components/RadioBtn";
+import RadioBtn from "../../Components/RadioCategoryBtn";
 import PriceItem from "./PriceItem";
 
 const Price = () => {
