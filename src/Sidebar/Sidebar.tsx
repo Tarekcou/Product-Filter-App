@@ -3,9 +3,9 @@ import Colors from "./Colors/Colors";
 
 const Sidebar = () => {
   return (
-    <section className="top-0 bottom-0 fixed flex md:flex-col justify-center items-center gap-5 border-r-2  overflow-y-scroll w-2/12 ">
+    <section className=" fixed overflow-y-scrolls invisible hidden md:flex  md:flex-col justify-center items-center gap-5 md:pl-10   lg:pl-16   h-full ">
       <div className="">
-        <h1 className="border-b-2 w-full text-4xl p-0">🛒</h1>
+        <h1 className="border-b-2 w-full text-4xl pt-10">🛒</h1>
       </div>
 
       <Category />

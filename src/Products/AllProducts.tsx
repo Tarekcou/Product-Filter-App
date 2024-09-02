@@ -6,7 +6,7 @@ interface Props {
 }
 const AllProducts = ({ products }: Props) => {
   return (
-    <div className="place-items-end gap-5 grid grid-cols-2 md:grid-cols-4 w-full">
+    <div className="place-items-end gap-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full">
       {products.map((product) => (
         <Cards key={product.id} product={product} />
       ))}
