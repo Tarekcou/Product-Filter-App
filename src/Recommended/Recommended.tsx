@@ -6,7 +6,7 @@ const Recommended = ({ recomendedText }: Props) => {
   return (
     <div className="space-y-2 mx-auto py-5 w-full">
       <h1 className="font-bold">Recommended</h1>
-      <div className="flex gap-1">
+      <div className="flex gap-1 flex-wrap">
         <Button onClick={() => recomendedText("All Products")} size="sm">
           All Products
         </Button>

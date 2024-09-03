@@ -23,10 +23,13 @@ const Nav = ({ onSubmit }: Props) => {
   };
 
   return (
-    <nav className="flex justify-between items-center pr-12 w-full">
-      <form onSubmit={handleSubmit} className="flex rounded-xl w-9/12">
+    <nav className="flex flex-col md:flex-row justify-between items-center gap-3  ">
+      <form
+        onSubmit={handleSubmit}
+        className="flex rounded-xl w-10/12 md:w-8/12  justify-center"
+      >
         <Input
-          className="border-indigo-50 shadow-lg w-8/12"
+          className="border-indigo-50 shadow-lg w-full "
           type="text"
           placeholder="Enter your Shoes"
           onChange={handleChange}
@@ -35,7 +38,7 @@ const Nav = ({ onSubmit }: Props) => {
         <Button className="shadow-xl btn btn-success">Submit</Button>
       </form>
 
-      <div className="flex gap-5 text-2xl">
+      <div className="flex  gap-5 text-2xl">
         <a href="#">
           <FiHeart />
         </a>

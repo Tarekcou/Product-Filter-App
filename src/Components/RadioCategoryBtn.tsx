@@ -8,7 +8,7 @@ interface Props {
 
 const RadioCategoryBtn = ({ title, id, onSelected }: Props) => {
   return (
-    <div className="form-control">
+    <div className="form-control flex">
       <label
         className="flex justify-center items-center gap-2 cursor-pointer"
         onClick={() => onSelected(title)}
@@ -16,7 +16,7 @@ const RadioCategoryBtn = ({ title, id, onSelected }: Props) => {
         <input
           type="radio"
           name="radio-10"
-          className="radio"
+          className="radio-xs md:radio"
           value={title}
           key={id}
         />

@@ -7,7 +7,7 @@ interface Props {
 }
 const Cards = ({ product }: Props) => {
   return (
-    <Card className="shadow-xl mx-auto sm:w-[200px] md:w-[230px]">
+    <Card className="shadow-xl  mx-auto max-w-[250px] ">
       <Card.Image className="p-5 h-[150px]" src={product.img} alt="Shoes" />
       <Card.Body className="flex flex-col items-center gap-3 p-3 min-h-[250px] text-center">
         <Card.Title className="font-bold" tag="h2">

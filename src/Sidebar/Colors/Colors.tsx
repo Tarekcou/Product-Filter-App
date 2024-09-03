@@ -16,18 +16,21 @@ const Colors = () => {
 
   // }
   return (
-    <form className="flex flex-col items-start gap-2">
+    <>
       <h2 className="font-bold">Colors</h2>
-      {ColorItem.map((itemName: string, index: number) => (
-        <RadioCategoryBtn
-          key={index}
-          title={itemName}
-          id={index}
-          dataCustom="color"
-          onSelected={onSelectedCategory}
-        />
-      ))}
-    </form>
+
+      <form className="flex md:flex-col items-start gap-2">
+        {ColorItem.map((itemName: string, index: number) => (
+          <RadioCategoryBtn
+            key={index}
+            title={itemName}
+            id={index}
+            dataCustom="color"
+            onSelected={onSelectedCategory}
+          />
+        ))}
+      </form>
+    </>
   );
 };
 

@@ -17,31 +17,31 @@ function App() {
   let [sideCategoryText, setSideCategoryText] = useState("");
   let [sideColorText, setSideColorText] = useState("");
   let [filteredProducts, setFilteredProducts] = useState<Products[]>([]);
-  let [specialText, setSpecialText] = useState("");
+  // let [specialText, setSpecialText] = useState("");
 
-  const filterConditions = {
-    company: searchQuery,
-    category: sideCategoryText,
-    // color: sideColorText,
-  };
+  // const filterConditions = {
+  //   company: searchQuery,
+  //   category: sideCategoryText,
+  //   // color: sideColorText,
+  // };
   // let filterproducts = ProductsData;
   const inputText = (query: string) => {
     setSearchQuery(query);
-    setSpecialText(query);
+    // setSpecialText(query);
   };
 
   const recomendedText = (recomendedtxt: string) => {
     setSearchQuery(recomendedtxt);
-    setSpecialText(recomendedtxt);
+    // setSpecialText(recomendedtxt);
   };
 
   const onCategoryClick = () => {
     console.log("fdsfsdfds");
-    setSpecialText(sideCategoryText);
+    // setSpecialText(sideCategoryText);
   };
 
   const onColorClick = () => {
-    setSpecialText(sideColorText);
+    // setSpecialText(sideColorText);
   };
 
   useEffect(() => {
@@ -121,8 +121,8 @@ function App() {
 
   return (
     <>
-      <div className="flex ">
-        <div className="w-2/12 h-full ">
+      <div className="flex md:flex-row flex-col mx-auto ">
+        <div className="hidden md:block w-2/12 ">
           <SideCategoryContext.Provider
             value={{
               sideCategoryText,
@@ -137,11 +137,29 @@ function App() {
             </SideColorContext.Provider>
           </SideCategoryContext.Provider>
         </div>
-        <div className="flex flex-col justify-start items-start mt-[30px]  pl-5 w-10/12">
-          <div className=" ">
-            <Nav onSubmit={inputText} />
+        <div className="flex   flex-col justify-start items-start    px-5 pb-5 w-full md:w-10/12 ">
+          <div className="w-full ">
+            <div className="">
+              <Nav onSubmit={inputText} />
 
-            <Recommended recomendedText={recomendedText} />
+              <Recommended recomendedText={recomendedText} />
+            </div>
+
+            <div className="w-2/12 block md:hidden ">
+              <SideCategoryContext.Provider
+                value={{
+                  sideCategoryText,
+                  setSideCategoryText,
+                  onCategoryClick,
+                }}
+              >
+                <SideColorContext.Provider
+                  value={{ sideColorText, setSideColorText, onColorClick }}
+                >
+                  <Sidebar />
+                </SideColorContext.Provider>
+              </SideCategoryContext.Provider>
+            </div>
 
             <AllProducts
               products={
